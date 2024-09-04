@@ -3,8 +3,7 @@ import { Request, Response } from "express";
 import { ReportRequest } from "../entity/ReportRequest";
 import axios from 'axios';
 const reportRequestRepository = AppDataSource.getRepository(ReportRequest);
-//our service name env
-const ourServiceName = "serviceNameNumberOne"; // вынести
+const ourServiceName = process.env.SERVICE_NAME;
 const dataEndpoint = "http://localhost:3000/report/get-data";
 const tableHeaders: string[] = [
     'Имя учащегося',

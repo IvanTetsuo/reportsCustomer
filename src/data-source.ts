@@ -4,14 +4,14 @@ import { ReportRequest } from "./entity/ReportRequest";
 
 
 export const AppDataSource = new DataSource({
-    "type": "postgres", // не выносить, а всё остальное выносить
-    "host": "localhost",
-    "port": 5432,
+    "type": "postgres",
+    "host": process.env.DB_HOST,
+    "port": +process.env.DB_PORT! || 5432,
     "username": process.env.DB_USERNAME,
-    "password": "notasecret",
-    "database": "admin",
-    "entities": [DataForReport, ReportRequest], // это нет
-    "synchronize": true, // это тоже нет
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_DATABASE,
+    "entities": [DataForReport, ReportRequest],
+    "synchronize": true,
 });
 
 export const initDataSource = async () => {
