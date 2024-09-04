@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getReportResult = async (req: Request, res: Response) => {
     const {idReport} = req.params;
     const result = await axios.get(`http://localhost:5000/is-ready/${idReport}`);
-    const {isReady, documentId, downloadURL} = result.data;
+    const {isReady, downloadURL} = result.data;
     if (!isReady) {
         return res.status(404).end();
     }
